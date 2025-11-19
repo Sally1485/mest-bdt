@@ -1,9 +1,11 @@
-import { Eye, Trash2, Users, Dot, Calendar } from "lucide-react";
+import { Eye, Trash2, Users, Dot, Calendar, Plus } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { Plus } from "lucide-react";
+
 
 export default function Companies() {
+
+
   return (
     <>
       <div className="flex flex-col bg-gray-200 p-8 text-black">
@@ -25,9 +27,12 @@ export default function Companies() {
             </Link>
           </div>
         </section>
-        {/* Initial Companies */}
-        <section className="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 ">
-          <div className=" relative rounded-lg shadow-md space-y-2 bg-white ">
+
+
+        {/* company card 1 */}
+        <section className="mt-4 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4  cursor-pointer ">
+          <div className=" relative rounded-lg shadow-md space-y-2 bg-white border border-transparent hover:border-blue-400  hover:shadow-lg ">
+            {/* Card Image */}
             <div className="relative w-full h-48  overflow-hidden">
               <Image
                 src={
@@ -37,57 +42,62 @@ export default function Companies() {
                 fill
                 quality={100}
                 style={{ objectFit: "cover" }}
-                className="rounded-t-lg"
+                className="rounded-t-lg transform transition-transform duration-300 hover:scale-110 "
               />
-            </div>
-            <div className="flex mt-4 items-center justify-between">
-              {/*Action tags  */}
-              <p className="bg-blue-100 absolute top-2 left-2 text-blue-900 px-2 py-1 rounded-full text-xs">
-                upcoming{" "}
-              </p>
-              <div className=" absolute top-2  right-2 flex items-center gap-3">
-                <Link href={"/companies/view?id=1"}>
-                  <Eye className="w-8 h-8 text-gray-600 bg-white p-1.5 rounded-full hover:text-blue-500 cursor-pointer transition" />
-                </Link>
-                <Trash2 className="text-red-600 w-8 h-8 bg-white p-1.5 rounded-full shadow-sm hover:text-red-500 cursor-pointer transition" />
-              </div>
             </div>
 
             {/* Company Details */}
-            <div className=" flex flex-col p-3  ">
-              <h2 className=" font-semibold ">
-                Leadership development Company
-              </h2>
-              <p className="text-gray-700 text-base mt-2  leading-relaxed">
-                An intensive 12-week program designed to develop leadership
-                skills and strategic thinking for mid-level managers.
-              </p>
-              <div>
-                <div className="space-y-2 mt-2 text-sm text-gray-600">
-                  <div className="flex items-center gap-4">
-                    <div className="flex items-center gap-2">
-                      <Users />
-                      <p>Cohort: 2025 Spring Cohort</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Dot />
-                    <p>24 participants</p>
-                  </div>
+            <div className="  flex flex-col p-3  ">
+              <div className="flex justify-between">
+                <h2 className="text-gray-800 hover:text-blue-700 ">
+                  StartupHub Ventures
+                </h2>
+                <p className="bg-gray-200  text-black px-2 py-1 rounded-full text-xs">
+                  completed{" "}
+                </p>
+              </div>
+              <div className=" mt-1.5 flex items-center test-sm text-gray-700">
+                <p>Venture Captial </p>
+                <span className="flex items-center ml-2"><Dot /> 85 employees</span>
+              </div>
+            </div>
+
+            {/* Details */}
+            <div className="space-y-2 mt-4 text-sm text-gray-600 px-4">
+              <div className="flex items-center gap-4">
+                <div className="flex items-center gap-2">
+                  <Users size={16} />
+                  <p>Participants: 6</p>
                 </div>
-                <div className="flex items-center gap-2 mt-2 mb-4">
-                  <Calendar className="w-4 h-4 text-gray-500" />
-                  <p className="text-gray-600 text-sm">
-                    March 17, 2025 - Jun 7, 2025
-                  </p>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2">
+                  <Calendar size={16} />
+                  <p>Onboarded:</p>
+                </div>
+                <p>Aug 15, 2024</p>
+              </div>
+            </div>
+
+            {/* Progress bar */}
+            <div className="bg-white rounded-lg w-72 mt-2 block p-4">
+              <div className="flex justify-between">
+                <p className="text-sm mb-1 text-gray-600">Completion</p>
+                <p className="text-sm mb-1">100%</p>
+              </div>
+              <div className="w-full h-2 bg-gray-400 rounded-full">
+                <div className="w-4/4 h-full  bg-black rounded-full">
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Initial Company */}
-          <div className="relative bg-white rounded-lg shadow-md space-y-3 ">
-            <div className="relative w-full h-48 overflow-hidden">
+
+
+          {/* company card 2*/}
+          <div className="relative rounded-lg shadow-md space-y-2 bg-white border border-transparent hover:border-blue-400  hover:shadow-lg ">
+            {/* Card Image */}
+            <div className="relative w-full h-48 overflow-hidden ">
               <Image
                 src={
                   "https://i.pinimg.com/1200x/a3/51/30/a35130edc8113b0b747ed58f84fa3f8c.jpg"
@@ -96,57 +106,59 @@ export default function Companies() {
                 fill
                 quality={100}
                 style={{ objectFit: "cover" }}
-                className="rounded-t-lg"
+                className="rounded-t-lg transform transition-transform duration-300 hover:scale-110"
               />
             </div>
 
-            {/* Action Tags */}
-            <div className="flex items-center mt-2 justify-between">
-              <div className="flex items-center gap-3">
-                <p className="bg-green-100 text-green-700 px-2 py-1 absolute top-2 left-2 rounded-full text-xs ">
-                  active{" "}
+            {/* Company Details */}
+            <div className="  flex flex-col p-3  ">
+              <div className="flex justify-between">
+                <h2 className="text-gray-800  hover:text-blue-700">
+                  BrightRight Solution
+                </h2>
+                <p className="bg-gray-200  text-black px-2 py-1 rounded-full text-xs">
+                  completed{" "}
                 </p>
               </div>
-              <div className="absolute top-2 right-2 flex items-center gap-3">
-                <Link href={"/companies/view?id=2"}>
-                  <Eye className="w-8 h-8 text-gray-600 bg-white p-1.5 rounded-full hover:text-blue-500 cursor-pointer transition" />
-                </Link>
-                <Trash2 className="text-red-600 w-8 h-8 bg-white rounded-full p-1.5 hover:text-red-500 cursor-pointer transition" />
+              <div className=" mt-1.5 flex items-center test-sm text-gray-700">
+                <p>Construction Tech</p>
+                <span className="flex items-center ml-2"><Dot /> 320 employees</span>
               </div>
             </div>
 
-            {/* Companies Details */}
-            <div className="flex flex-col p-3">
-              <h2 className=" font-semibold ">Technical Skills Bootcamp</h2>
-              <p className="mt-2 text-gray-700 text-base leading-relaxed">
-                An intensive 12-week program designed to develop leadership
-                skills and strategic thinking for mid-level managers.
-              </p>
-              <div className="mt-2">
-                <div className="space-y-2 text-sm text-gray-600">
-                  <div className="flex items-center gap-4">
-                    <div className="flex items-center gap-2">
-                      <Users />
-                      <p>Cohort: 2025 Spring Cohort </p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Dot />
-                    <p>24 participants</p>
-                  </div>
+            {/* Details */}
+            <div className="space-y-2 mt-4 text-sm text-gray-600 px-4">
+              <div className="flex items-center gap-4">
+                <div className="flex items-center gap-2">
+                  <Users size={16} />
+                  <p>Participants: 8</p>
                 </div>
-                <div className="flex items-center gap-2 mt-2">
-                  <Calendar className="w-4 h-4 text-gray-500" />
-                  <p className="text-gray-600 text-sm">
-                    March 17, 2025 - Jun 7, 2025
-                  </p>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2">
+                  <Calendar size={16} />
+                  <p>Onboarded:</p>
+                </div>
+                <p>Aug 20, 2024</p>
+              </div>
+            </div>
+            {/* Progress Bar */}
+            <div className="bg-white rounded-lg w-72  block p-4">
+              <div className="flex justify-between">
+                <p className="text-sm mb-1 text-gray-600">completion</p>
+                <p className="text-sm mb-1">100%</p>
+              </div>
+              <div className="w-full h-2 bg-gray-400 rounded-full">
+                <div className="w-4/4 h-full bg-black rounded-full">
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Initial Company */}
-          <div className="relative bg-white rounded-lg shadow-md space-y-3 ">
+
+          {/* company card 3 */}
+          <div className="relative rounded-lg shadow-md space-y-2 bg-white border border-transparent hover:border-blue-400  hover:shadow-lg ">
+            {/* card Image */}
             <div className="relative w-full h-48 overflow-hidden">
               <Image
                 src={
@@ -156,54 +168,53 @@ export default function Companies() {
                 fill
                 quality={100}
                 style={{ objectFit: "cover" }}
-                className="rounded-t-lg"
+                className="rounded-t-lg transform transition-transform duration-300 hover:scale-110"
               />
             </div>
 
-            {/* Action Tags */}
-            <div className="flex items-center mt-2 justify-between">
-              <div className="flex items-center gap-3">
-                <p className="bg-white absolute top-2 left-2  px-2 py-1 rounded-full text-xs">
+            {/* Company Details */}
+            <div className=" flex flex-col p-3  ">
+              <div className="flex justify-between">
+                <h2 className="text-gray-800 hover:text-blue-700 ">
+                  HealthTech Innovations
+                </h2>
+                <p className="bg-gray-200  text-black px-2 py-1 rounded-full text-xs">
                   completed{" "}
                 </p>
               </div>
-              <div className="flex top-2 right-2 absolute items-center gap-3">
-                <Link href={"/companies/view?id=3"}>
-                  <Eye className="w-8 h-8 text-gray-600 bg-white p-1.5 rounded-full hover:text-blue-500 cursor-pointer transition" />
-                </Link>
-                <Trash2 className="text-red-600 w-8 h-8 bg-white p-1.5 rounded-full hover:text-red-500 cursor-pointer transition" />
+              <div className=" mt-1.5 flex items-center test-sm text-gray-700">
+                <p>Healthcare </p>
+                <span className="flex items-center ml-2"><Dot /> 540 employees</span>
               </div>
             </div>
-
-            {/* Companies Details */}
-            <div className="flex flex-col p-3">
-              <h2 className="font-semibold ">Product Management Fellowship</h2>
-              <p className="mt-2 text-gray-700 text-base leading-relaxed">
-                An intensive 12-week program designed to develop leadership
-                skills and strategic thinking for mid-level managers.
-              </p>
-              <div className="mt-2">
-                <div className="space-y-2 text-sm text-gray-600">
-                  <div className="flex items-center gap-4">
-                    <div className="flex items-center gap-2">
-                      <Users />
-                      <p>Cohort: 2025 Spring Cohort</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Dot />
-                    <p>24 participants</p>
-                  </div>
+            {/* Details */}
+            <div className="space-y-2 mt-4 text-sm text-gray-600 px-4">
+              <div className="flex items-center gap-4">
+                <div className="flex items-center gap-2">
+                  <Users size={16} />
+                  <p>Participants: 4</p>
                 </div>
-                <div className="flex items-center gap-2 mt-2">
-                  <Calendar className="w-4 h-4 text-gray-500" />
-                  <p className="text-gray-600 text-sm">
-                    March 17, 2025 - Jun 7, 2026
-                  </p>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2">
+                  <Calendar size={16} />
+                  <p>Onboarded:</p>
                 </div>
+                <p>Aug 10, 2024</p>
+              </div>
+            </div>
+            {/* Progress bar */}
+            <div className="bg-white rounded-lg w-72 block p-4">
+              <div className="flex justify-between">
+                <p className="text-sm mb-1 text-gray-600">completion</p>
+                <p className="text-sm mb-1">100%</p>
+              </div>
+              <div className="w-full h-2 bg-gray-400 rounded-full">
+                <div className="w-4/4 h-full bg-black rounded-full"></div>
               </div>
             </div>
           </div>
+
         </section>
       </div>
     </>

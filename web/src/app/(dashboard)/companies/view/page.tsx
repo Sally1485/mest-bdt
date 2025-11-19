@@ -1,96 +1,146 @@
 import Image from "next/image";
 import Link from "next/link";
+import { SquarePen, Trash2, Building2, Users, Calendar, Mail, Phone } from "lucide-react";
 
 export default function ViewCompanyPage() {
   return (
-    <div className="p-6 sm:p-10 min-h-screen bg-gray-100 dark:bg-[#0b0c10] text-gray-900 dark:text-gray-100 transition-colors duration-300">
+    <div className="p-6 sm:p-10 min-h-screen bg-gray-100  text-gray-900  transition-colors duration-300">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8">
-        <h1 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-0">
-          Company Details
-        </h1>
+      <div className="flex flex-col sm:flex-row justify-between  sm:items-center ">
+        <div className="flex justify-between items-center gap-2">
+          <Building2 size={24} />
+          <h1 className="text-lg">
+            TechVentures Inc.
+          </h1>
+          <p className="px-2 py-1 text-xs bg-blue-100 text-blue-600 rounded-full ">onboarding</p>
+        </div>
 
         <div className="flex flex-wrap gap-3">
           <Link
             href={"/companies/edit?id=1"}
-            className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm transition"
+            className="flex items-center justify-between gap-3 bg-white hover:bg-gray-200 text-blue-600 px-2 py-2 border border-gray-400 rounded-lg text-sm transition"
           >
-            Edit Company
+            <SquarePen size={16} />
+            <p className="font-medium"> Edit</p>
           </Link>
-          <button className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg text-sm transition">
-            Delete Company
+          <button className="flex items-center gap-3 bg-white text-red-500 hover:bg-gray-300 px-2 py-1 border border-gray-400 rounded-lg text-sm transition cursor-pointer">
+            <Trash2 size={16} />
+            <p className="font-medium">Delete</p>
           </button>
         </div>
       </div>
 
+      <div className="mt-1 mb-8">
+        <p className="text-gray-500 ">Part of leadership development program</p>
+      </div>
+
+
+      <div className="flex justify-between gap-2 items-center">
+        <div className="bg-white shadow-lg text-sm px-6 py-4 rounded-2xl border border-gray-300  w-full">
+        <h2 className=" mb-10 text-gray-950 font-bold">Industry</h2>
+          <span className="flex items-center gap-2">
+            <Building2 size={20} />
+            <p>Technology</p>
+          </span>
+        </div>
+        <div className="bg-white shadow-lg text-sm px-6 py-4 rounded-2xl border border-gray-300   w-full">
+        <h2 className="mb-10 text-gray-950 font-bold">Company size</h2>
+          <span className="flex items-center gap-2">
+            <Users size={20}/>
+            <p>250 employees</p>
+          </span>
+        </div>
+        <div className="bg-white shadow-lg px-6 text-sm  py-4 rounded-2xl border border-gray-300   w-full">
+        <h2 className="mb-10 text-gray-950  font-bold">Participants enrolled</h2>
+          <span className="flex items-center gap-2">
+            <Users  size={20}/>
+            <p>8 participants</p>
+          </span>
+        </div>
+        <div className="bg-white shadow-lg text-sm px-6 py-4 rounded-2xl border border-gray-300  w-full">
+        <h2 className="mb-10 text-gray-950 font-bold">Onboarding Date</h2>
+          <span className="flex items-center gap-2">
+            <Calendar size={20} />
+            <p>Feb 15, 2025</p>
+          </span>
+        </div>
+
+      </div>
+
+
+
       {/* Image Section */}
-      <div className="relative mb-10">
+      <div className="relative mt-8  mb-10">
         <Image
           src="https://i.pinimg.com/1200x/a3/51/30/a35130edc8113b0b747ed58f84fa3f8c.jpg"
           alt="Company Image"
           width={1200}
-          height={500}
+          height={400}
           quality={100}
           className="rounded-2xl object-cover shadow-md"
         />
-        <p className="absolute top-5 left-5 bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-semibold">
-          Active
-        </p>
       </div>
 
-      {/* Summary Information */}
-      <div className="bg-white dark:bg-[#1a1d24] p-6 rounded-2xl shadow-md mb-10">
-        <h2 className="text-lg font-semibold mb-5 text-gray-800 dark:text-gray-200">
-          Summary Information
-        </h2>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-5 text-sm">
-          <div>
-            <p className="text-gray-500 dark:text-gray-400">Company Name</p>
-            <p className="font-semibold">Technical Skills Bootcamp</p>
-          </div>
-
-          <div>
-            <p className="text-gray-500 dark:text-gray-400">Start Date</p>
-            <p className="font-semibold">March 17, 2025</p>
-          </div>
-
-          <div>
-            <p className="text-gray-500 dark:text-gray-400">End Date</p>
-            <p className="font-semibold">June 7, 2025</p>
-          </div>
-
-          <div>
-            <p className="text-gray-500 dark:text-gray-400">Cohort</p>
-            <p className="font-semibold">2025 Spring Cohort</p>
-          </div>
-
-          <div>
-            <p className="text-gray-500 dark:text-gray-400">Participants</p>
-            <p className="font-semibold">24</p>
-          </div>
-
-          <div>
-            <p className="text-gray-500 dark:text-gray-400">Status</p>
-            <p className="font-semibold text-green-600 dark:text-green-400">
-              Active
-            </p>
-          </div>
-        </div>
+     <div className="flex justify-between gap-4 ">
+      <div className="bg-white rounded-lg px-6 border  border-gray-300 w-full"> 
+    <div className="mt-4 mb-7">
+      <h2 className=" text-gray-900 text-sm font-bold mb-1"> Contact Information</h2>
+      <p className="text-gray-600 text-sm">Primary contact for this company</p>
+    </div>
+    <div className="mb-4">
+      <h2 className=" text-sm text-gray-600 font-normal ">Contact Person</h2>
+      <p className="text-sm font-semibold text-gray-900">Sarah Ayitey</p>
+    </div>
+    <div className=" border-t  border-gray-200"></div>
+    <div className="mt-6 mb-4 ">
+      <h2 className="text-sm text-gray-600 font-normal">Email Address</h2>
+      <span className="flex gap-2 items-center mt-2">
+        <Mail size={16} />
+       <p className="text-sm text-blue-600 hover:underline cursor-pointer "> saraha@gmail.com</p>
+      </span>
+    </div>
+    <div className="border-t border-gray-200"></div>
+    <div className="mt-4 mb-4">
+      <h2 className="text-sm text-blue-600l">Phone Number</h2>
+      <span className="flex items-center  gap-2">
+      <Phone  size={16}/>
+      <p className="text-sm">+233 (023)(2345)</p>
+      </span>
+    </div>
       </div>
 
-      {/* Description Section */}
-      <div className="bg-white dark:bg-[#1a1d24] p-6 rounded-2xl shadow-md">
-        <h2 className="text-lg font-semibold mb-3 text-gray-800 dark:text-gray-200">
-          Description
-        </h2>
-        <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-          The Technical Skills Bootcamp is a hands-on program focused on
-          developing practical technology and business skills. Participants work
-          on real-world projects while receiving mentorship to strengthen their
-          understanding of product development, teamwork, and innovation.
-        </p>
+
+      <div className="bg-white rounded-lg px-6 border border-gray-300 w-full"> 
+    <div className="mt-4">
+      <h2 className="text-sm text-gray-900 font-bold mb-2"> Progress & performance </h2>
+      <p className="text-sm text-gray-700 mb-8">Company's program performance metrics</p>
+    </div>
+     {/* Progress bar */}
+            <div className="w-full bg-white rounded-lg  block mb-4 ">
+              <div className="flex justify-between">
+                <p className="text-sm mb-1 text-gray-900">Completion Rate</p>
+                <p className="text-sm mb-1">0%</p>
+              </div>
+              <div className="w-full h-2 bg-gray-400 rounded-full">
+                {/* <div className="w-4/4 h-full  bg-black rounded-full"> */}
+                </div>
+              </div>
+           
+        
+    <div className=" border-t border-gray-300"></div>
+    <div className="flex items-center mt-4 gap-20">
+      <div>
+      <h2 className="text-sm text-gray-600">Status</h2>
+   <p className="px-1 py-1 text-sm bg-blue-300 text-blue-700 rounded-full">onboarding</p>
+    </div>
+    <div className=" text-gray-900">
+      <h2 className="text-sm text-gray-600">Participants</h2>
+      <p className="mt-2">8 enrolled</p>
+    </div>
+    </div>
+    
       </div>
+     </div>
     </div>
   );
 }
