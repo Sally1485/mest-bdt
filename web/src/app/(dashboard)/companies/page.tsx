@@ -1,4 +1,4 @@
-import { Eye, Trash2, Users, Dot, Calendar, Plus } from "lucide-react";
+import { Users, Dot, Calendar, Plus } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -9,18 +9,18 @@ export default function Companies() {
   return (
     <>
       <div className="flex flex-col bg-gray-200 p-8 text-black">
-        <section className=" flex justify-between ">
+        <section className=" flex justify-between gap-4  ">
           <div>
-            <h1 className="text-2xl md:text-3xl  font-semibold text-gray-900 tracking-tight">
+            <h1 className="text-xl md:text-3xl  font-semibold text-gray-900 tracking-tight">
               Companies Management
             </h1>
             <p className="mt-1 text-gray-600 text-base">List of Companies</p>
           </div>
           <div>
             <Link href={"/companies/add"}>
-              <button className="w-full bg-black p-1  md:p-2 flex md:flex-row md:gap-2 text-white rounded-lg cursor-pointer">
+              <button className="w-full bg-black p-1 text-xs md:text-lg md:p-2 flex md:flex-row md:gap-2 text-white rounded-lg cursor-pointer items-center">
                 <span>
-                  <Plus />
+                  <Plus className="w-6 h-6" />
                 </span>
                 Add Company
               </button>
@@ -49,28 +49,28 @@ export default function Companies() {
             {/* Company Details */}
             <div className="  flex flex-col p-3  ">
               <div className="flex justify-between">
-                <h2 className="text-gray-800 hover:text-blue-700 ">
+                <h2 className="text-gray-800 text-sm md:text-sm hover:text-blue-700 ">
                   StartupHub Ventures
                 </h2>
-                <p className="bg-gray-200  text-black px-2 py-1 rounded-full text-xs">
+                <p className="bg-gray-200 flex items-center text-black px-2 py-1 rounded-full text-xs">
                   completed{" "}
                 </p>
               </div>
-              <div className=" mt-1.5 flex items-center test-sm text-gray-700">
+              <div className=" mt-1.5 flex items-center text-xs md:text-sm text-gray-700">
                 <p>Venture Captial </p>
                 <span className="flex items-center ml-2"><Dot /> 85 employees</span>
               </div>
             </div>
 
             {/* Details */}
-            <div className="space-y-2 mt-4 text-sm text-gray-600 px-4">
+            <div className="space-y-2 mt-4 text-xs md:text-sm text-gray-600 px-4">
               <div className="flex items-center gap-4">
                 <div className="flex items-center gap-2">
                   <Users size={16} />
                   <p>Participants: 6</p>
                 </div>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex text-xs md:text-sm items-center gap-2">
                 <div className="flex items-center gap-2">
                   <Calendar size={16} />
                   <p>Onboarded:</p>
@@ -80,7 +80,7 @@ export default function Companies() {
             </div>
 
             {/* Progress bar */}
-            <div className="bg-white rounded-lg w-72 mt-2 block p-4">
+            <div className="bg-white rounded-lg w-full md:w-72 mt-2 md:block p-4">
               <div className="flex justify-between">
                 <p className="text-sm mb-1 text-gray-600">Completion</p>
                 <p className="text-sm mb-1">100%</p>
@@ -113,14 +113,14 @@ export default function Companies() {
             {/* Company Details */}
             <div className="  flex flex-col p-3  ">
               <div className="flex justify-between">
-                <h2 className="text-gray-800  hover:text-blue-700">
+                <h2 className="text-gray-800 text-sm md:text-sm  hover:text-blue-700">
                   BrightRight Solution
                 </h2>
-                <p className="bg-gray-200  text-black px-2 py-1 rounded-full text-xs">
+                <p className="bg-gray-200  flex items-center text-black px-2 py-1 rounded-full text-xs">
                   completed{" "}
                 </p>
               </div>
-              <div className=" mt-1.5 flex items-center test-sm text-gray-700">
+              <div className=" mt-1.5 flex items-center text-xs md:text-sm text-gray-700">
                 <p>Construction Tech</p>
                 <span className="flex items-center ml-2"><Dot /> 320 employees</span>
               </div>
@@ -143,7 +143,7 @@ export default function Companies() {
               </div>
             </div>
             {/* Progress Bar */}
-            <div className="bg-white rounded-lg w-72  block p-4">
+            <div className="bg-white rounded-lg w-full md:w-72  block p-4">
               <div className="flex justify-between">
                 <p className="text-sm mb-1 text-gray-600">completion</p>
                 <p className="text-sm mb-1">100%</p>
@@ -175,14 +175,14 @@ export default function Companies() {
             {/* Company Details */}
             <div className=" flex flex-col p-3  ">
               <div className="flex justify-between">
-                <h2 className="text-gray-800 hover:text-blue-700 ">
+                <h2 className="text-gray-800 text-sm md:text-sm hover:text-blue-700 ">
                   HealthTech Innovations
                 </h2>
-                <p className="bg-gray-200  text-black px-2 py-1 rounded-full text-xs">
+                <p className="bg-gray-200  flex items-center text-black px-2 py-1 rounded-full text-xs">
                   completed{" "}
                 </p>
               </div>
-              <div className=" mt-1.5 flex items-center test-sm text-gray-700">
+              <div className=" mt-1.5 flex items-center text-xs md:text-sm text-gray-700">
                 <p>Healthcare </p>
                 <span className="flex items-center ml-2"><Dot /> 540 employees</span>
               </div>
@@ -204,7 +204,7 @@ export default function Companies() {
               </div>
             </div>
             {/* Progress bar */}
-            <div className="bg-white rounded-lg w-72 block p-4">
+            <div className="bg-white rounded-lg w-full md:w-72 block p-4">
               <div className="flex justify-between">
                 <p className="text-sm mb-1 text-gray-600">completion</p>
                 <p className="text-sm mb-1">100%</p>
