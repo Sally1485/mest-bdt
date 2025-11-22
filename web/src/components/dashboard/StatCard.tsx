@@ -27,7 +27,9 @@ const StatCard: React.FC<StatCardProps> = ({
     <div className="p-4 bg-white dark:bg-[#1a1d24] rounded-2xl shadow-lg flex items-center justify-between transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
       <div>
         <p className="text-sm text-gray-500 dark:text-gray-400">{title}</p>
-        <p className="text-2xl font-bold text-gray-900 dark:text-white">{value}</p>
+        <p className="text-2xl font-bold text-gray-900 dark:text-white">
+          {value}
+        </p>
         <p className={`text-sm mt-1 ${changeColor}`}>{change}</p>
       </div>
       <div className="p-3 bg-indigo-100 dark:bg-indigo-900/50 rounded-full">

@@ -29,6 +29,7 @@ import { AuthGuard } from '../common/guards/auth.guard';
 export class ProfilesController {
   constructor(private readonly profilesService: ProfilesService) {}
 
+  @UseGuards(AuthGuard)
   @Post()
   @ApiCreatedResponse({
     description: 'The profile has been successfully created.',
@@ -50,6 +51,11 @@ export class ProfilesController {
   })
   findAll(@Query() filter: JSON) {
     return this.profilesService.findAll(filter);
+  }
+
+  @Get('count')
+  countDocuments(@Query() filter: JSON) {
+    return this.profilesService.countDocuments(filter);
   }
 
   @UseGuards(AuthGuard)
@@ -80,6 +86,7 @@ export class ProfilesController {
     return this.profilesService.findOne({ _id: id });
   }
 
+  @UseGuards(AuthGuard)
   @Patch(':id')
   @ApiOkResponse({ description: 'The profile has been successfully updated.' })
   @ApiNotFoundResponse({
@@ -93,6 +100,7 @@ export class ProfilesController {
     return this.profilesService.updateOne({ _id: id }, updateProfileDto);
   }
 
+  @UseGuards(AuthGuard)
   @Delete(':id')
   @ApiOkResponse({ description: 'The profile has been successfully deleted.' })
   @ApiNotFoundResponse({

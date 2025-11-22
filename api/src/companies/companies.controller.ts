@@ -7,6 +7,7 @@ import {
   Param,
   Delete,
   Query,
+  UseGuards,
 } from '@nestjs/common';
 import {
   ApiBadRequestResponse,
@@ -18,12 +19,14 @@ import {
 import { CompaniesService } from './companies.service';
 import { CreateCompanyDto } from './dto/create-company.dto';
 import { UpdateCompanyDto } from './dto/update-company.dto';
+import { AuthGuard } from '../common/guards/auth.guard';
 
 @ApiTags('companies')
 @Controller('companies')
 export class CompaniesController {
   constructor(private readonly companiesService: CompaniesService) {}
 
+  @UseGuards(AuthGuard)
   @Post()
   @ApiCreatedResponse({
     description: 'The company has been successfully created.',
@@ -37,8 +40,13 @@ export class CompaniesController {
   @ApiOkResponse({
     description: 'The companies have been successfully found.',
   })
-  findAll(@Query() filter: JSON) {
-    return this.companiesService.findAll(filter);
+  findAll(@Query() { filter = '{}' }: { filter: string }) {
+    return this.companiesService.findAll(JSON.parse(filter) as object);
+  }
+
+  @Get('count')
+  countDocuments(@Query() { filter = '{}' }: { filter: string }) {
+    return this.companiesService.countDocuments(JSON.parse(filter) as object);
   }
 
   @Get(':id')
@@ -50,6 +58,7 @@ export class CompaniesController {
     return this.companiesService.findOne({ _id: id });
   }
 
+  @UseGuards(AuthGuard)
   @Patch(':id')
   @ApiOkResponse({ description: 'The company has been successfully updated.' })
   @ApiNotFoundResponse({
@@ -63,6 +72,7 @@ export class CompaniesController {
     return this.companiesService.updateOne({ _id: id }, updateCompanyDto);
   }
 
+  @UseGuards(AuthGuard)
   @Delete(':id')
   @ApiOkResponse({ description: 'The company has been successfully deleted.' })
   @ApiNotFoundResponse({

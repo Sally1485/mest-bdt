@@ -1,63 +1,11 @@
 import Image from "next/image";
-import Link from "next/link";
-import {
-  SquarePen,
-  Trash2,
-  Building2,
-  Users,
-  Calendar,
-  Mail,
-  Phone,
-  ArrowLeft,
-} from "lucide-react";
+import { Building2, Users, Calendar, Mail, Phone } from "lucide-react";
+import CompanyHeader from "@/components/companies/CompanyHeader";
 
 export default function ViewCompanyPage() {
   return (
     <div className="p-6 sm:p-10 min-h-screen bg-gray-100  text-gray-900  transition-colors duration-300">
-      <div className="inline-block">
-        {/* Back  Navigation */}
-        <Link
-          href={"/companies"}
-          className="flex  items-center gap-2 rounded-lg text-sm text-gray-800  hover:bg-gray-300 px-3 py-2  transition-all duration-200 mb-4"
-        >
-          <ArrowLeft
-            size={18}
-            className="transition-transform duration-200 group-hover:-translate-x-1"
-          />
-          Back to companies
-        </Link>
-      </div>
-      {/* Header */}
-      <div className="flex flex-col md:flex-row md:justify-between  md:items-start w-full">
-        <div className="w-full md:w-auto">
-          <div className="flex justify-between md:justify-start items-center gap-2">
-            <Building2 size={30} className="shrink-0" />
-            <h1 className="text-lg leading-relaxed">TechVentures Inc.</h1>
-            <p className="px-2 py-1 text-xs bg-blue-100 text-blue-600 rounded-full ">
-              onboarding
-            </p>
-          </div>
-          <div className="mt-1 md:mb-8">
-            <p className="text-gray-500 leading-relaxed">
-              Part of leadership development program
-            </p>
-          </div>
-        </div>
-
-        <div className="flex md:flex-wrap gap-3 mt-4 mb-6 md:mb-0">
-          <Link
-            href={"/companies/edit?id=1"}
-            className="flex items-center justify-between gap-3 bg-white hover:bg-gray-200 text-blue-600 px-2 py-2 border border-gray-400 rounded-lg text-sm transition"
-          >
-            <SquarePen size={16} />
-            <p className="font-medium"> Edit</p>
-          </Link>
-          <button className="flex items-center gap-3 bg-white text-red-500 hover:bg-gray-300 px-2 py-1 border border-gray-400 rounded-lg text-sm transition cursor-pointer">
-            <Trash2 size={16} />
-            <p className="font-medium">Delete</p>
-          </button>
-        </div>
-      </div>
+      <CompanyHeader />
 
       <div className="flex flex-col md:flex-row justify-between gap-2 items-center">
         <div className="bg-white shadow-lg text-sm px-6 py-4 rounded-2xl border border-gray-300  w-full">

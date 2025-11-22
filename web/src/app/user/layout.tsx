@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: "MEST Africa - BDT User View",
 };
 
-export default function DashboardLayout({
+export default function UserLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;

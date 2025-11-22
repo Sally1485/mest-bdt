@@ -7,6 +7,7 @@ import {
   Param,
   Body,
   Query,
+  UseGuards,
 } from '@nestjs/common';
 import {
   ApiBadRequestResponse,
@@ -18,18 +19,22 @@ import {
 import { CohortsService } from './cohorts.service';
 import { CreateCohortDto } from './dto/create-cohort.dto';
 import { UpdateCohortDto } from './dto/update-cohort.dto';
+import { AuthGuard } from '../common/guards/auth.guard';
 
 @ApiTags('cohorts')
 @Controller('cohorts')
 export class CohortsController {
   constructor(private readonly cohortsService: CohortsService) {}
 
+  @UseGuards(AuthGuard)
   @Post()
   @ApiCreatedResponse({
     description: 'The cohort has been successfully created.',
   })
   @ApiBadRequestResponse({ description: 'Invalid input data provided.' })
   create(@Body() createCohortDto: CreateCohortDto) {
+    // TODO: Ensure program used to create cohort exist
+    // Create and return cohort
     return this.cohortsService.create(createCohortDto);
   }
 
@@ -37,8 +42,13 @@ export class CohortsController {
   @ApiOkResponse({
     description: 'The cohorts have been successfully found.',
   })
-  findAll(@Query() filter: JSON) {
-    return this.cohortsService.findAll(filter);
+  findAll(@Query() { filter = '{}' }: { filter: string }) {
+    return this.cohortsService.findAll(JSON.parse(filter) as object);
+  }
+
+  @Get('count')
+  countDocuments(@Query() { filter = '{}' }: { filter: string }) {
+    return this.cohortsService.countDocuments(JSON.parse(filter) as object);
   }
 
   @Get(':id')
@@ -50,6 +60,7 @@ export class CohortsController {
     return this.cohortsService.findOne({ _id: id });
   }
 
+  @UseGuards(AuthGuard)
   @Patch(':id')
   @ApiOkResponse({ description: 'The cohort has been successfully updated.' })
   @ApiNotFoundResponse({
@@ -60,6 +71,7 @@ export class CohortsController {
     return this.cohortsService.updateOne({ _id: id }, updateCohortDto);
   }
 
+  @UseGuards(AuthGuard)
   @Delete(':id')
   @ApiOkResponse({ description: 'The cohort has been successfully deleted.' })
   @ApiNotFoundResponse({

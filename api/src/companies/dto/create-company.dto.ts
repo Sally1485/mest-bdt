@@ -1,6 +1,12 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { IsMongoId, IsNotEmpty } from 'class-validator';
 
 export class CreateCompanyDto {
+  @IsMongoId()
+  @ApiProperty()
+  cohort: string;
+
+  @IsNotEmpty()
   @ApiProperty({
     description: 'The name of the company.',
     example: 'Acme Corporation',

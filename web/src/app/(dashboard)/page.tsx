@@ -4,7 +4,7 @@ import StatCardsGrid from "@/components/dashboard/StatCardsGrid";
 import PerformanceChart from "@/components/dashboard/PerformanceChart";
 import RecentActivities from "@/components/dashboard/RecentActivities";
 
-export default function Dashboard() {
+export default function DashboardPage() {
   return (
     <div className="px-4 sm:px-8 py-6 min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
       <DashboardHeader />
