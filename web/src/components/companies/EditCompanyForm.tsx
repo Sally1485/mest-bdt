@@ -95,7 +95,7 @@ export default function EditCompanyForm() {
       <div className="mt-10 border-t border-gray-200  "></div>
 
       {/* Program Details  */}
-      <div className=" mt-4 w-[95%] mx-auto">
+      {/* <div className=" mt-4 w-[95%] mx-auto">
         <h2 className="text-sm">Program Details</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4 items-center ">
           <div className="text-sm flex flex-col text-gray-800 justify-between gap-1 mb-1 ">
@@ -164,8 +164,8 @@ export default function EditCompanyForm() {
             className="w-full px-3 py-1 bg-gray-100 rounded-lg"
           />
         </div>
-      </div>
-      <div className="mt-10 border-t border-gray-200 "></div>
+      </div> */}
+      {/* <div className="mt-10 border-t border-gray-200 "></div> */}
 
       {/* Company Information */}
       <div className=" mt-4 w-[95%] mx-auto text-gray-800 ">
