@@ -81,9 +81,9 @@ export default function EditProgramForm() {
       </div>
       <div className="mt-10 border-t border-gray-200  "></div>
 
-      {/* Scheduling of participants */}
+      {/* Scheduling */}
       <div className=" mt-4 w-[95%] mx-auto">
-        <h2 className="text-sm">Schedule & Participants</h2>
+        <h2 className="text-sm">Schedule</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4 ">
           <div className="text-sm flex flex-col justify-between gap-2">
             <label htmlFor="">
@@ -107,18 +107,6 @@ export default function EditProgramForm() {
               type="date"
               name="endDate"
               defaultValue={dayjs(data?.endDate).format("YYYY-MM-DD")}
-              className="block bg-gray-100 px-2 py-1 rounded-lg w-full"
-              required
-            />
-          </div>
-          <div className="text-sm flex flex-col justify-between gap-2">
-            <label htmlFor="">
-              Number of Participants
-              <span className="text-red-700">*</span>
-            </label>
-            <input
-              type="number"
-              name=""
               className="block bg-gray-100 px-2 py-1 rounded-lg w-full"
               required
             />

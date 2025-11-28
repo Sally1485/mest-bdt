@@ -1,5 +1,4 @@
 "use client";
-import { Plus } from "lucide-react";
 import SubmitButton from "../core/SubmitButton";
 import { apiClient } from "@/utils/api";
 import { useRouter } from "next/navigation";
@@ -74,8 +73,8 @@ export default function AddProgramForm() {
 
       {/* Scheduling of participants */}
       <div className=" mt-4 w-[95%] mx-auto">
-        <h2 className="text-sm">Schedule & Participants</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4 ">
+        <h2 className="text-sm">Schedule</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 ">
           <div className="text-sm flex flex-col justify-between gap-2">
             <label htmlFor="">
               Start Date
@@ -100,18 +99,7 @@ export default function AddProgramForm() {
               required
             />
           </div>
-          <div className="text-sm flex flex-col justify-between gap-2">
-            <label htmlFor="">
-              Number of Participants
-              <span className="text-red-700">*</span>
-            </label>
-            <input
-              type="number"
-              name=""
-              className="block bg-gray-100 px-2 py-1 rounded-lg w-full"
-              required
-            />
-          </div>
+         
         </div>
       </div>
       <div className="mt-10 border-t border-gray-200  "></div>
