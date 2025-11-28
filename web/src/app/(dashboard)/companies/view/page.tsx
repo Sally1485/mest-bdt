@@ -181,7 +181,7 @@ export default function ViewCompanyPage() {
         <div className="flex flex-col  mt-6  ">
           <div className="flex flex-col mb-4">
 
-            <h2 className="text-sm text-gray-900 mb-2">Company's Mission</h2>
+            <h2 className="text-sm text-gray-900 mb-2">Company&#39;s Mission</h2>
             <p className="text-sm text-gray-600 ">Our mission is to empower individuals and businesses with innovative, reliable solutions that simplify their daily operations and unlock new opportunities for growth. We are committed to delivering exceptional value through integrity, customer-focused service, and continuous improvement in everything we do.</p>
           </div>
           <div className=" border-t  border-gray-400"></div>
