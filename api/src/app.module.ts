@@ -8,6 +8,8 @@ import { ProgramsModule } from './programs/programs.module';
 import { CohortsModule } from './cohorts/cohorts.module';
 import { CompaniesModule } from './companies/companies.module';
 import { UsersModule } from './users/users.module';
+import { FormsModule } from './forms/forms.module';
+import { ResponsesModule } from './responses/responses.module';
 
 @Module({
   imports: [
@@ -23,6 +25,8 @@ import { UsersModule } from './users/users.module';
     CohortsModule,
     CompaniesModule,
     UsersModule,
+    FormsModule,
+    ResponsesModule,
   ],
 })
 export class AppModule {}
