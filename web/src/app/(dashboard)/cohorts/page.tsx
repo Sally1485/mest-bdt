@@ -3,7 +3,7 @@ import CohortsHeader from "@/components/cohorts/CohortsHeader";
 
 export default function CohortsPage() {
   return (
-    <div className=" bg-gray-200 p-8 rounded-md text-black">
+    <div className="bg-[#0B1220] p-8 rounded-md  ">
       <CohortsHeader />
       <Cohorts />
     </div>

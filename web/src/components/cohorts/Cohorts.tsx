@@ -30,7 +30,7 @@ export default function Cohorts() {
   }
 
   return (
-    <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 w-full mb-6">
+    <section className="ml-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       {data.map((cohort: Cohort) => (
         <CohortCard key={cohort.id} cohort={cohort} />
       ))}
