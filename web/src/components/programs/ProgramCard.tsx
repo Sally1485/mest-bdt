@@ -1,5 +1,5 @@
 import { Program } from "@/utils/types";
-import { Eye, Users, Dot, Calendar } from "lucide-react";
+import { Eye, Boxes, Calendar } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -42,15 +42,9 @@ export default function ProgramCard({ program }: ProgramCardProps) {
         </p>
         <div>
           <div className="space-y-2 mt-2 text-sm text-gray-600">
-            <div className="flex items-center gap-4">
-              <div className="flex items-center gap-2">
-                <Users />
-                <p>Cohort: 2025 Spring Cohort</p>
-              </div>
-            </div>
             <div className="flex items-center gap-2">
-              <Dot />
-              <p>24 participants</p>
+            <Boxes className="w-4 h-4" />
+              <p> 24 Cohorts</p>
             </div>
           </div>
           <div className="flex items-center gap-2 mt-2 mb-4">
