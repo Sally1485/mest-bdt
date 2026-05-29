@@ -114,7 +114,7 @@ export default function ResponseCard({
       <div className="bg-foreground/5 p-4 border-t border-border flex items-center justify-between">
         <div className="flex items-center gap-2 text-[10px] font-bold text-foreground/30 uppercase tracking-widest">
           <Calendar size={12} />
-          {response.createdAt
+           {response.createdAt
             ? new Date(response.createdAt).toLocaleDateString()
             : "N/A"}
         </div>

@@ -12,6 +12,7 @@ import {
   Loader2,
   FileText,
 } from "lucide-react";
+import { formatDate, formatDateTime } from "@/utils/date";
 
 export default function FormDetail() {
   const searchParams = useSearchParams();
@@ -98,11 +99,9 @@ export default function FormDetail() {
                   </span>
                 </div>
                 <p className="text-[11px] font-bold text-foreground/60">
-                  {form.createdAt
-                    ? new Date(form.createdAt).toLocaleDateString(undefined, {
+                  {formatDate(form.createdAt, {
                         dateStyle: "long",
-                      })
-                    : "N/A"}
+                      })}
                 </p>
               </div>
               <div className="space-y-1">
@@ -113,9 +112,7 @@ export default function FormDetail() {
                   </span>
                 </div>
                 <p className="text-[11px] font-bold text-foreground/60">
-                  {form.updatedAt
-                    ? new Date(form.updatedAt).toLocaleString()
-                    : "N/A"}
+                  {formatDateTime(form.updatedAt)}
                 </p>
               </div>
             </>

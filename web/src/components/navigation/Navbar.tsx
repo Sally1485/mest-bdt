@@ -8,6 +8,7 @@ import { ThemeToggle } from "../core/ThemeToggle";
 import HankoLogout from "../auth/HankoLogout";
 import NoSSR from "../core/NoSSR";
 
+
 // Define the type for a navigation link item
 interface NavItem {
   name: string;
@@ -17,6 +18,7 @@ interface NavItem {
 const navItems: NavItem[] = [
   // { name: "Account", href: "/account" },
   { name: "Company", href: "/user/company" },
+
 ];
 
 const Navbar: React.FC = () => {
@@ -65,6 +67,13 @@ const Navbar: React.FC = () => {
                   {item.name}
                 </Link>
               ))}
+              {/* Responses Link */}
+              <Link
+                href="/user/responses"
+                className="text-foreground/70 hover:bg-foreground/5 hover:text-foreground px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200"
+              >
+               My Inputs
+              </Link>
             </div>
             <div className="pl-4 border-l border-border flex items-center gap-4">
               <ThemeToggle />
@@ -120,6 +129,13 @@ const Navbar: React.FC = () => {
               {item.name}
             </Link>
           ))}
+          <Link
+            href="/user/responses"
+            className="text-foreground/70 hover:bg-foreground/5 hover:text-foreground block px-4 py-3 rounded-xl text-base font-semibold transition-all duration-200"
+            onClick={() => setIsOpen(false)}
+          >
+           My Responses
+          </Link>
           <div className="pt-4 border-t border-border mt-4">
             <NoSSR>
               <HankoLogout />

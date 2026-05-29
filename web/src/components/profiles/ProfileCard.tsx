@@ -2,6 +2,7 @@
 import { Profile } from "@/utils/types";
 import { Mail, Calendar, Eye, ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { formatDate } from "@/utils/date";
 
 export interface ProfileCardProps {
   profile: Profile;
@@ -44,9 +45,7 @@ export default function ProfileCard({ profile }: ProfileCardProps) {
             <div className="flex items-center gap-1.5 text-xs font-bold text-foreground">
               <Calendar size={12} className="text-primary" />
               <span>
-                {profile.createdAt
-                  ? new Date(profile.createdAt).toLocaleDateString()
-                  : "N/A"}
+                {formatDate(profile.createdAt)}
               </span>
             </div>
           </div>

@@ -7,6 +7,7 @@ import SubmitButton from "../core/SubmitButton";
 import toast from "react-hot-toast";
 import { Building2, Activity, Target } from "lucide-react";
 
+
 export default function CompanyInfo() {
   const { user } = useUser();
   const { data, mutate } = useSWR(`/companies/${user?.company}`, apiFetcher);
@@ -215,7 +216,9 @@ export default function CompanyInfo() {
               </div>
             </div>
           </section>
+        <section>
 
+      </section>
           {/* Action Footer */}
           <div className="flex justify-end pt-8 border-t border-border">
             <SubmitButton
