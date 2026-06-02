@@ -7,7 +7,7 @@ import { apiFetcher } from "@/utils/api";
 import { ThemeToggle } from "../core/ThemeToggle";
 import HankoLogout from "../auth/HankoLogout";
 import NoSSR from "../core/NoSSR";
-import ResponseCard from "../responses/ResponseCard";
+
 
 // Define the type for a navigation link item
 interface NavItem {
