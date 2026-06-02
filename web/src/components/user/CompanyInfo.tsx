@@ -6,6 +6,7 @@ import { apiClient, apiFetcher } from "@/utils/api";
 import SubmitButton from "../core/SubmitButton";
 import toast from "react-hot-toast";
 import { Building2, Activity, Target } from "lucide-react";
+import UserResponse from "../responses/UserResponseDetail";
 
 
 export default function CompanyInfo() {
@@ -219,6 +220,7 @@ export default function CompanyInfo() {
         <section>
 
       </section>
+      <UserResponse />
           {/* Action Footer */}
           <div className="flex justify-end pt-8 border-t border-border">
             <SubmitButton

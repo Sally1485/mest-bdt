@@ -7,7 +7,7 @@ import { apiFetcher } from "@/utils/api";
 import { ThemeToggle } from "../core/ThemeToggle";
 import HankoLogout from "../auth/HankoLogout";
 import NoSSR from "../core/NoSSR";
-
+import ResponseCard from "../responses/ResponseCard";
 
 // Define the type for a navigation link item
 interface NavItem {
@@ -134,7 +134,7 @@ const Navbar: React.FC = () => {
             className="text-foreground/70 hover:bg-foreground/5 hover:text-foreground block px-4 py-3 rounded-xl text-base font-semibold transition-all duration-200"
             onClick={() => setIsOpen(false)}
           >
-           My Responses
+           My Inputs
           </Link>
           <div className="pt-4 border-t border-border mt-4">
             <NoSSR>

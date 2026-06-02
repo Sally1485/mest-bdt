@@ -6,17 +6,21 @@ import { Loader2, AlertCircle, FileX, Eye, Trash2 } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { useUser } from "@/hooks/user";
 
 
 
 
 export default function UserResponses() {
+  const { user } = useUser();
   const { data: responses, isLoading, error, mutate } = useSWR<Response[]>(
-    "/responses",
+   user?.company ? `/responses?companyId=${user.company}` : null,
     apiFetcher
   );
-  const [deletingId, setDeletingId] = useState<string | null>(null);
 
+  
+  const [deletingId, setDeletingId] = useState<string | null>(null);
+console.log(responses)
   const handleDelete = async (id: string) => {
     if (!confirm("Delete this input?")) return;
 
