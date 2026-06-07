@@ -261,7 +261,7 @@ describe('UsersController (backward-compatibility regression for /users)', () =>
 
     // Object.keys won't expose unset properties, so round-trip the fields
     // through a fresh instance to confirm every expected key is settable.
-    const probe = new CreateUserDto() as Record<string, unknown>;
+    const probe = new CreateUserDto() as unknown as Record<string, unknown>;
     for (const field of expected) {
       probe[field] = field === 'access' ? 'READ' : `value-${field}`;
     }
@@ -380,7 +380,7 @@ describe('UsersController (backward-compatibility regression for /users)', () =>
 
   it('preserves User response schema field names', () => {
     // Pin the externally-visible field set on the User class.
-    const probe = new User() as Record<string, unknown>;
+    const probe = new User() as unknown as Record<string, unknown>;
     probe.company = '60f1b9b3b3b3b3b3b3b3b3b3';
     probe.email = 'a@b.com';
     probe.name = 'A';

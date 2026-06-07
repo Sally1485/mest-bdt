@@ -80,6 +80,20 @@ describe('ResponsesController', () => {
     expect(result).toEqual({ deletedCount: 1 });
   });
 
+  it('returns BMC analytics for a response', async () => {
+    const analytics = {
+      score: 3.5,
+      percentage: 35,
+      total: 10,
+      answered: 10,
+      questions: 10,
+    };
+    jest.spyOn(service, 'getAnalytics').mockResolvedValue(analytics);
+    const result = await controller.analytics('1');
+    expect(result).toEqual(analytics);
+    expect(service.getAnalytics as jest.Mock).toHaveBeenCalledWith('1');
+  });
+
   it('declares AuthGuard before AccessGuard at the controller level', () => {
     const guards = Reflect.getMetadata(
       GUARDS_METADATA,

@@ -1,0 +1,5 @@
+# Kiro spec workspace — local agent state, not for the team repo
+.kiro/
+
+# Postman collections kept locally; team workflows live elsewhere
+postman/

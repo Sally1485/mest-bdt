@@ -1,8 +1,11 @@
 import { Test, TestingModule } from '@nestjs/testing';
+import { NotFoundException } from '@nestjs/common';
 import { ResponsesService } from './responses.service';
 import { getModelToken } from '@nestjs/mongoose';
 import { Response } from './schemas/response.schema';
 import { mockModel } from '../common/mocks/model';
+
+const VALID_ID = 'a'.repeat(24);
 
 describe('ResponsesService', () => {
   let service: ResponsesService;
@@ -69,5 +72,51 @@ describe('ResponsesService', () => {
     const result = await service.deleteOne({ _id: '1' });
     expect(result).toEqual({ deletedCount: 1 });
     expect(mockModel.deleteOne).toHaveBeenCalledWith({ _id: '1' });
+  });
+
+  describe('getAnalytics', () => {
+    it('computes BMC analytics from a response', async () => {
+      mockModel.findOne.mockReturnThis();
+      mockModel.exec.mockResolvedValue({
+        data: JSON.stringify({
+          q1: 'Yes',
+          q1_impact: 8,
+          q2: 'No',
+          q2_impact: 4,
+        }),
+      });
+
+      const result = await service.getAnalytics(VALID_ID);
+
+      expect(result).toEqual({
+        score: 2,
+        percentage: 20,
+        total: 10,
+        answered: 2,
+        questions: 2,
+      });
+    });
+
+    it('throws 404 for a malformed id without touching the model', async () => {
+      await expect(service.getAnalytics('not-an-id')).rejects.toBeInstanceOf(
+        NotFoundException,
+      );
+    });
+
+    it('throws 404 when the response is not found', async () => {
+      mockModel.findOne.mockReturnThis();
+      mockModel.exec.mockResolvedValue(null);
+      await expect(service.getAnalytics(VALID_ID)).rejects.toBeInstanceOf(
+        NotFoundException,
+      );
+    });
+
+    it('throws 404 when stored data is not valid JSON', async () => {
+      mockModel.findOne.mockReturnThis();
+      mockModel.exec.mockResolvedValue({ data: 'not json{' });
+      await expect(service.getAnalytics(VALID_ID)).rejects.toBeInstanceOf(
+        NotFoundException,
+      );
+    });
   });
 });

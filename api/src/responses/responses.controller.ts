@@ -82,6 +82,21 @@ export class ResponsesController {
     return this.responsesService.findOne({ _id: id });
   }
 
+  @Get(':id/analytics')
+  @ApiOperation({ summary: 'Get BMC diagnostic analytics for a response' })
+  @ApiOkResponse({
+    description:
+      'Per-block BMC analytics: score (mean signed impact), percentage, and totals.',
+  })
+  @ApiNotFoundResponse({
+    description: 'The response with the given id was not found.',
+  })
+  @ApiUnauthorizedResponse({ description: 'Unauthorized.' })
+  @ApiForbiddenResponse({ description: 'Forbidden.' })
+  async analytics(@Param('id') id: string) {
+    return this.responsesService.getAnalytics(id);
+  }
+
   @Patch(':id')
   @ApiOperation({ summary: 'Update a response' })
   @ApiOkResponse({
