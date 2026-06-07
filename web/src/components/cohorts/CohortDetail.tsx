@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import useSWR from "swr";
 import { Calendar, Building2, Info, Loader2, Clock } from "lucide-react";
+import { formatDate } from "@/utils/date";
 
 export default function CohortDetail() {
   const searchParams = useSearchParams();
@@ -87,7 +88,7 @@ export default function CohortDetail() {
                   Start Date
                 </p>
                 <p className="text-sm font-bold text-foreground">
-                  {new Date(data.startDate).toLocaleDateString(undefined, {
+                  {formatDate(data.startDate, {
                     month: "long",
                     day: "numeric",
                     year: "numeric",
@@ -105,7 +106,7 @@ export default function CohortDetail() {
                   End Date
                 </p>
                 <p className="text-sm font-bold text-foreground">
-                  {new Date(data.endDate).toLocaleDateString(undefined, {
+                  {formatDate(data.endDate, {
                     month: "long",
                     day: "numeric",
                     year: "numeric",

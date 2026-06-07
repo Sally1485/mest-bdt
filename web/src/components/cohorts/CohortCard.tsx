@@ -3,6 +3,7 @@ import { Cohort } from "@/utils/types";
 import { Eye, Edit, Calendar, Clock } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { formatDate } from "@/utils/date";
 
 export interface CohortCardProps {
   cohort: Cohort;
@@ -40,11 +41,7 @@ export default function CohortCard({ cohort }: CohortCardProps) {
                 <Calendar size={10} className="text-primary" /> Start Date
               </span>
               <span className="text-xs font-bold text-foreground">
-                {new Date(cohort.startDate).toLocaleDateString(undefined, {
-                  month: "short",
-                  day: "numeric",
-                  year: "numeric",
-                })}
+                {formatDate(cohort.startDate)}
               </span>
             </div>
             <div className="flex flex-col gap-1 border-l border-border pl-4">
@@ -52,11 +49,7 @@ export default function CohortCard({ cohort }: CohortCardProps) {
                 <Clock size={10} className="text-primary" /> End Date
               </span>
               <span className="text-xs font-bold text-foreground">
-                {new Date(cohort.endDate).toLocaleDateString(undefined, {
-                  month: "short",
-                  day: "numeric",
-                  year: "numeric",
-                })}
+                {formatDate(cohort.endDate)}
               </span>
             </div>
           </div>

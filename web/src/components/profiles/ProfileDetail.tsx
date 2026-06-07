@@ -3,6 +3,7 @@ import React from "react";
 import useSWR from "swr";
 import { apiFetcher } from "@/utils/api";
 import { Profile } from "@/utils/types";
+import { formatDate } from "@/utils/date";
 import {
   Mail,
   Calendar,
@@ -132,13 +133,7 @@ const ProfileDetail: React.FC<ProfileDetailProps> = ({ id }) => {
                 Created
               </div>
               <span className="text-xs font-bold text-foreground">
-                {profile.createdAt
-                  ? new Date(profile.createdAt).toLocaleDateString(undefined, {
-                      month: "short",
-                      day: "numeric",
-                      year: "numeric",
-                    })
-                  : "N/A"}
+                {formatDate(profile.createdAt)}
               </span>
             </div>
             <div className="flex items-center justify-between">
@@ -147,13 +142,7 @@ const ProfileDetail: React.FC<ProfileDetailProps> = ({ id }) => {
                 Updated
               </div>
               <span className="text-xs font-bold text-foreground">
-                {profile.updatedAt
-                  ? new Date(profile.updatedAt).toLocaleDateString(undefined, {
-                      month: "short",
-                      day: "numeric",
-                      year: "numeric",
-                    })
-                  : "N/A"}
+                {formatDate(profile.updatedAt)}
               </span>
             </div>
           </div>
