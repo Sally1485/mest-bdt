@@ -34,23 +34,38 @@ export default function InviteUserSection() {
     apiFetcher,
   );
 
-  const handleInvite = async (formData: FormData) => {
-    try {
-      await apiClient.post(`/users`, {
-        email: formData.get("email"),
-        access: formData.get("access"),
-        company: companyId,
-      });
-      toast.success("Invitation sent successfully!");
-      mutate();
-      const form = document.getElementById("invite-form") as HTMLFormElement;
-      form?.reset();
-    } catch (error) {
-      console.error(error);
-      toast.error("Failed to send invitation.");
-    }
-  };
+ const handleInvite = async (formData: FormData) => {
+  try {
+    const email = String(formData.get("email"));
+    const access = String(formData.get("access"));
 
+    // Create user
+    await apiClient.post("/users", {
+      email,
+      access,
+      company: companyId,
+    });
+
+    // Send invitation email
+    await apiClient.post("/invitations", {
+      email,
+      company: companyId,
+      access,
+    });
+
+    toast.success("Invitation sent successfully!");
+    mutate();
+
+    const form = document.getElementById(
+      "invite-form"
+    ) as HTMLFormElement;
+
+    form?.reset();
+  } catch (error) {
+    console.error(error);
+    toast.error("Failed to send invitation.");
+  }
+};
   const handleRevoke = async (userId: string) => {
     try {
       await apiClient.delete(`/users/${userId}`);

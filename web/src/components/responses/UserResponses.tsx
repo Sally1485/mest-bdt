@@ -18,9 +18,10 @@ export default function UserResponses() {
     apiFetcher
   );
 
+  // /companies/{id}/responses
+
   
   const [deletingId, setDeletingId] = useState<string | null>(null);
-console.log(responses)
   const handleDelete = async (id: string) => {
     if (!confirm("Delete this input?")) return;
 
