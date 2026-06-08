@@ -37,7 +37,7 @@ describe('AuthGuard', () => {
       UnauthorizedException,
     );
     await expect(guard.canActivate(mockContext)).rejects.toThrow(
-      'Access token not found in authorization header!',
+      'Authentication required. Please sign in to continue.',
     );
   });
 
@@ -56,6 +56,9 @@ describe('AuthGuard', () => {
 
     await expect(guard.canActivate(mockContext)).rejects.toThrow(
       UnauthorizedException,
+    );
+    await expect(guard.canActivate(mockContext)).rejects.toThrow(
+      'Authentication required. Please sign in to continue.',
     );
   });
 

@@ -18,7 +18,7 @@ export class AuthGuard implements CanActivate {
     // console.log(token);
     if (!token) {
       throw new UnauthorizedException(
-        'Access token not found in authorization header!',
+        'Authentication required. Please sign in to continue.',
       );
     }
     try {
@@ -27,8 +27,10 @@ export class AuthGuard implements CanActivate {
       // so that we can access it in our route handlers
       // console.log(result);
       request['user'] = result.payload;
-    } catch (error) {
-      throw new UnauthorizedException(error.message);
+    } catch {
+      throw new UnauthorizedException(
+        'Authentication required. Please sign in to continue.',
+      );
     }
     return true;
   }

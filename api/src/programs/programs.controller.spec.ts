@@ -41,7 +41,7 @@ describe('ProgramsController', () => {
   });
 
   it('should count programs', async () => {
-    jest.spyOn(service, 'countDocuments').mockResolvedValue(5 as any);
+    jest.spyOn(service, 'countDocuments').mockResolvedValue(5);
     const result = await controller.countDocuments({ filter: '{}' });
     expect(result).toEqual(5);
   });
@@ -56,7 +56,7 @@ describe('ProgramsController', () => {
   it('should update a program', async () => {
     const dto = { name: 'Updated' };
     jest.spyOn(service, 'updateOne').mockResolvedValue(dto as any);
-    const result = await controller.updateOne('1', dto as any);
+    const result = await controller.updateOne('1', dto);
     expect(result).toEqual(dto);
   });
 

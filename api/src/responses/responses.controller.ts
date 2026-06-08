@@ -7,6 +7,7 @@ import {
   Param,
   Delete,
   Query,
+  UseGuards,
 } from '@nestjs/common';
 import {
   ApiBadRequestResponse,
@@ -24,10 +25,13 @@ import { ResponsesService } from './responses.service';
 import { CreateResponseDto } from './dto/create-response.dto';
 import { UpdateResponseDto } from './dto/update-response.dto';
 import { Response } from './schemas/response.schema';
+import { AuthGuard } from '../common/guards/auth.guard';
+import { AccessGuard } from '../common/guards/access.guard';
 
 @ApiTags('responses')
 @ApiBearerAuth()
 @ApiInternalServerErrorResponse({ description: 'Internal server error.' })
+@UseGuards(AuthGuard, AccessGuard)
 @Controller('responses')
 export class ResponsesController {
   constructor(private readonly responsesService: ResponsesService) {}
@@ -76,6 +80,21 @@ export class ResponsesController {
   @ApiUnauthorizedResponse({ description: 'Unauthorized.' })
   async findOne(@Param('id') id: string) {
     return this.responsesService.findOne({ _id: id });
+  }
+
+  @Get(':id/analytics')
+  @ApiOperation({ summary: 'Get BMC diagnostic analytics for a response' })
+  @ApiOkResponse({
+    description:
+      'Per-block BMC analytics: score (mean signed impact), percentage, and totals.',
+  })
+  @ApiNotFoundResponse({
+    description: 'The response with the given id was not found.',
+  })
+  @ApiUnauthorizedResponse({ description: 'Unauthorized.' })
+  @ApiForbiddenResponse({ description: 'Forbidden.' })
+  async analytics(@Param('id') id: string) {
+    return this.responsesService.getAnalytics(id);
   }
 
   @Patch(':id')

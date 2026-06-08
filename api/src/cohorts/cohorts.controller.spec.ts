@@ -45,7 +45,7 @@ describe('CohortsController', () => {
   it('should count cohorts', async () => {
     jest
       .spyOn(service, 'countDocuments' as keyof CohortsService)
-      .mockResolvedValue(5 as any);
+      .mockResolvedValue(5);
     const result = await controller.countDocuments({ filter: '{}' });
     expect(result).toEqual(5);
   });
@@ -62,7 +62,7 @@ describe('CohortsController', () => {
   it('should update a cohort', async () => {
     const dto = { name: 'Updated' };
     jest.spyOn(service, 'updateOne').mockResolvedValue(dto as any);
-    const result = await controller.updateOne('1', dto as any);
+    const result = await controller.updateOne('1', dto);
     expect(result).toEqual(dto);
   });
 

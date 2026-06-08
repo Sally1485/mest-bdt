@@ -59,7 +59,7 @@ describe('UploadsService', () => {
       const invalidFile = {
         ...mockFile,
         mimetype: 'application/pdf',
-      } as Express.Multer.File;
+      };
       await expect(service.uploadImage(invalidFile)).rejects.toThrow(
         BadRequestException,
       );

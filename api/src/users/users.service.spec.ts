@@ -25,7 +25,7 @@ describe('UsersService', () => {
   it('should create a user', async () => {
     const dto = { email: 'test@test.com' };
     mockModel.insertOne.mockResolvedValue(dto);
-    const result = await service.create(dto as any);
+    const result = await service.create(dto);
     expect(result).toEqual(dto);
     expect(mockModel.insertOne).toHaveBeenCalledWith(dto);
   });
@@ -56,7 +56,7 @@ describe('UsersService', () => {
   it('should update a user', async () => {
     const user = { email: 'Updated' };
     mockModel.updateOne.mockResolvedValue(user);
-    const result = await service.updateOne({ _id: '1' }, user as any);
+    const result = await service.updateOne({ _id: '1' }, user);
     expect(result).toEqual(user);
     expect(mockModel.updateOne).toHaveBeenCalledWith({ _id: '1' }, user);
   });

@@ -4,14 +4,20 @@ import * as React from "react";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 
+// Avoids hydration mismatch by gating render on the client. `useSyncExternalStore`
+// returns the server snapshot (`false`) during SSR and the client snapshot (`true`)
+// after hydration without writing to state inside an effect.
+function useHasMounted(): boolean {
+  return React.useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false,
+  );
+}
+
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = React.useState(false);
-
-  // Avoid hydration mismatch
-  React.useEffect(() => {
-    setMounted(true);
-  }, []);
+  const mounted = useHasMounted();
 
   if (!mounted) {
     return <div className="p-2 w-9 h-9" />;

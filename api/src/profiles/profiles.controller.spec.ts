@@ -28,15 +28,15 @@ describe('ProfilesController', () => {
 
   it('should create a profile', async () => {
     const dto = { name: 'Profile 1', email: 'test@example.com' };
-    jest.spyOn(service, 'countDocuments').mockResolvedValue(0 as any);
+    jest.spyOn(service, 'countDocuments').mockResolvedValue(0);
     jest.spyOn(service, 'create').mockResolvedValue(dto as any);
-    const result = await controller.create(dto as any);
+    const result = await controller.create(dto);
     expect(result).toEqual(dto);
   });
 
   it('should throw BadRequestException if profile with email exists', async () => {
     const dto = { name: 'Profile 1', email: 'test@example.com' };
-    jest.spyOn(service, 'countDocuments').mockResolvedValue(1 as any);
+    jest.spyOn(service, 'countDocuments').mockResolvedValue(1);
     await expect(controller.create(dto as any)).rejects.toThrow();
   });
 
@@ -48,7 +48,7 @@ describe('ProfilesController', () => {
   });
 
   it('should count profiles', async () => {
-    jest.spyOn(service, 'countDocuments').mockResolvedValue(5 as any);
+    jest.spyOn(service, 'countDocuments').mockResolvedValue(5);
     const result = await controller.countDocuments({ filter: '{}' });
     expect(result).toEqual(5);
     expect(service.countDocuments as jest.Mock).toHaveBeenCalledWith({});

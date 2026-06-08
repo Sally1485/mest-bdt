@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Mail, Loader2, User, ShieldCheck } from "lucide-react";
 import toast from "react-hot-toast";
@@ -8,24 +8,18 @@ import useSWR from "swr";
 import { Profile } from "@/utils/types";
 import Button from "../core/Button";
 
-const EditProfileForm = () => {
+interface EditProfileFormBodyProps {
+  id: string;
+  profile: Profile;
+}
+
+// Inner form. The `key={profile.id}` on the parent guarantees this component
+// is remounted whenever the loaded profile changes, so we can safely seed
+// `email` from props in `useState` without needing a sync effect.
+const EditProfileFormBody = ({ id, profile }: EditProfileFormBodyProps) => {
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const id = searchParams.get("id");
-
-  const { data: profile, isLoading: isFetching } = useSWR<Profile>(
-    id ? `/profiles/${id}` : null,
-    apiFetcher,
-  );
-
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState(profile.email);
   const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {
-    if (profile) {
-      setEmail(profile.email);
-    }
-  }, [profile]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -45,17 +39,6 @@ const EditProfileForm = () => {
       setIsLoading(false);
     }
   };
-
-  if (isFetching) {
-    return (
-      <div className="min-h-[400px] flex flex-col items-center justify-center gap-4 card-meltwater bg-foreground/[0.02]">
-        <Loader2 className="h-10 w-10 text-primary animate-spin" />
-        <p className="text-foreground/40 font-bold uppercase tracking-widest text-xs">
-          Loading profile data...
-        </p>
-      </div>
-    );
-  }
 
   return (
     <form onSubmit={handleSubmit} className="max-w-2xl mx-auto space-y-8">
@@ -144,6 +127,32 @@ const EditProfileForm = () => {
       </div>
     </form>
   );
+};
+
+const EditProfileForm = () => {
+  const searchParams = useSearchParams();
+  const id = searchParams.get("id");
+
+  const { data: profile, isLoading: isFetching } = useSWR<Profile>(
+    id ? `/profiles/${id}` : null,
+    apiFetcher,
+  );
+
+  if (isFetching || !profile || !id) {
+    return (
+      <div className="min-h-[400px] flex flex-col items-center justify-center gap-4 card-meltwater bg-foreground/[0.02]">
+        <Loader2 className="h-10 w-10 text-primary animate-spin" />
+        <p className="text-foreground/40 font-bold uppercase tracking-widest text-xs">
+          Loading profile data...
+        </p>
+      </div>
+    );
+  }
+
+  // `key` ensures the inner form remounts whenever the loaded profile
+  // changes, so the email seed in `useState` always reflects the current
+  // profile without a sync-from-prop effect.
+  return <EditProfileFormBody key={id} id={id} profile={profile} />;
 };
 
 export default EditProfileForm;

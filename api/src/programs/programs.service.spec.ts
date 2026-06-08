@@ -30,7 +30,7 @@ describe('ProgramsService', () => {
   it('should create a program', async () => {
     const dto = { name: 'Program 1' };
     programModelMock.insertOne.mockResolvedValue(dto);
-    const result = await service.create(dto as any);
+    const result = await service.create(dto);
     expect(result).toEqual(dto);
     expect(programModelMock.insertOne).toHaveBeenCalledWith(dto);
   });
@@ -61,7 +61,7 @@ describe('ProgramsService', () => {
   it('should update a program', async () => {
     const program = { name: 'Updated Program' };
     programModelMock.updateOne.mockResolvedValue(program);
-    const result = await service.updateOne({ _id: '1' }, program as any);
+    const result = await service.updateOne({ _id: '1' }, program);
     expect(result).toEqual(program);
     expect(programModelMock.updateOne).toHaveBeenCalledWith(
       { _id: '1' },

@@ -1,11 +1,28 @@
 import { NestFactory } from '@nestjs/core';
-import { ValidationPipe } from '@nestjs/common';
+import { BadRequestException, ValidationPipe } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
+import { validateInvitationConfig } from './email/config';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  app.useGlobalPipes(new ValidationPipe());
+
+  // Fail fast if SMTP / APP_BASE_URL configuration is missing or invalid,
+  // before the HTTP listener starts.
+  validateInvitationConfig(process.env);
+
+  app.useGlobalPipes(
+    new ValidationPipe({
+      whitelist: true,
+      stopAtFirstError: true,
+      exceptionFactory: (errors) => {
+        const first = errors[0];
+        const constraint =
+          Object.values(first.constraints ?? {})[0] ?? 'Validation failed.';
+        return new BadRequestException(constraint);
+      },
+    }),
+  );
 
   app.enableCors();
 
