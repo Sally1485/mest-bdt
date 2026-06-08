@@ -18,8 +18,8 @@ export default function UserResponses() {
     apiFetcher
   );
 
-  // /companies/{id}/responses
-
+  
+// /companies/{id}/responses
   
   const [deletingId, setDeletingId] = useState<string | null>(null);
   const handleDelete = async (id: string) => {
